@@ -17,8 +17,9 @@ text0r currently runs in dev mode via nodemon.  To make this happen, run the fol
 Your .env file should look something like this
 
 ```
-TODO: FILL THIS IN
-
+PHONE_SID=PN_SEKRAT_VERY_REDACTED
+ACCOUNT_SID=AC_ALSO_SEKRAT_SO_REDACTED
+AUTH_TOKEN=SUPAR_SEKRAT_MUCH_REDACT
 ```
 
 ## Mad Props To
