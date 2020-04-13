@@ -5,14 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx nodemon index.jsx"
+    "dev": "NGROK_ENABLED=true npx nodemon index.jsx"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "ngrok": "^3.2.7",
-    "ws": "^7.2.3"
+    "uuid": "^7.0.3",
+    "ws": "^7.2.3",
+    "xml2js": "^0.4.23"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"
