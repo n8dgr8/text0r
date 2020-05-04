@@ -18,19 +18,35 @@ socket.addEventListener('message', function (event) {
 });
 
 function addMessage(message) {
-    $('#messages').append(`
-        <div class="ml-auto card w-70">
-            <div class="card-header">
-                <p class="card-text">${message.from}</p>
+    if (message.sent) {
+        $('#messages').append(`
+            <div class="card w-75 my-2">
+                <div class="card-header">
+                    <p class="card-text">To: ${message.to}</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">${message.body}</p>
+                </div>
+                <div class="card-footer">
+                    <p class="card-text" style="float: right;">${moment(message.dateTime).format('llll')}</p>
+                </div>
+            </div>`
+        );
+    } else {
+        $('#messages').append(`
+            <div class="ml-auto card w-75 my-2">
+                <div class="card-header">
+                    <p class="card-text">From: ${message.from}</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">${message.body}</p>
+                </div>
+                <div class="card-footer">
+                    <p class="card-text" style="float: right;">${moment(message.dateTime).format('llll')}</p>
+                </div>
             </div>
-            <div class="card-body">
-                <p class="card-text">${message.body}</p>
-            </div>
-            <div class="card-footer">
-                <p class="card-text" style="float: right;">${moment(message.dateTime).format('llll')}</p>
-            </div>
-        </div>
-    `);
+        `);
+    }
 }
 
 function setCurrentRecipient(currentRecipient) {
@@ -38,5 +54,27 @@ function setCurrentRecipient(currentRecipient) {
 }
 
 function sendIt() {
+    const messageText = $('#messageText').val();
+    const messageRecipient = $('#messageRecipient').val();
+
+    const message = {
+        to: messageRecipient,
+        dateTime: Date.now(),
+        body: messageText,
+        sent: true,
+    };
+
+    addMessage(message);
+
+    sendMessage(message);
+
+    $('#messageText').val('');
+    $('#messageRecipient').val('');
+
+
     console.log('sending message');
+}
+
+function sendMessage(message) {
+    axios.post('/send', message)
 }

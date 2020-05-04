@@ -57,6 +57,10 @@ app.post('/message', (req, res) => {
     res.sendStatus(201);
 });
 
+app.post('/send', (req, res) => {
+    console.log(req.body);
+});
+
 wss.on('connection', websocket => {
     websocket.on('message', message => {
         console.log(message);
