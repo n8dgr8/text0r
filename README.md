@@ -2,7 +2,7 @@
 
 ## Why?
 
-text0r was developed by WorkHound to assist in testing SMS messaging flows.
+text0r was developed to assist in testing SMS messaging flows.
 
 ## How?
 
